@@ -1,18 +1,29 @@
-**talkful** is a voice typer for desktop usage software. Its name came from the opposite
-of [typeless](https://www.typeless.com/), which is a matured and polished product focused on voice input on desktop,
+**talkful** is a voice typer app. Its name came from the oppositeof [typeless](https://www.typeless.com/), which is a
+matured and polished product focused on voice input on desktop,
 helpful to save time commanding (or blaming :p) code agents.
 
-To make it a simple and friendly tour of refactor, it mocked most external dependencies (like shortcut listening, voice
-recording, ASR:AutomaticSoundRecognition, text inject)
+## Design
+To make it a simple and friendly tour of refactor, it mocked most external dependencies:
+- shortcut
+- voice recording
+- ASR(Automatic Sound Recognition)
+- text inject (inject text into a focused text area)
 
-To startup with a project, it is a good way to read its testcases:
-- [audio usage](file://talkful/introduce/tests/test_audio.py)
-- [shortcut usage](file://talkful/introduce/tests/test_shortcut.py)
-- [complete listen and type demo](file://talkful/introduce/tests/basic_usage.py)
-
-## other docs
+## Other Docs
 - go to `{package}/api.py` to see the more detailed doc str.
 - [how to interact with the app?](file://talkful/introduce/tests/README.md)
 
+
+## Quick start
+
+To startup with a project, it is a good way to read its testcases:
+
+- [complete listen and type demo](file://talkful/introduce/tests/basic_usage.py)
+
+(optional) tests when dev mocked dependencies
+- [audio usage](file://talkful/introduce/tests/test_audio.py)
+- [shortcut usage](file://talkful/introduce/tests/test_shortcut.py)
+
+click **check** to run all test cases
 
 <img src="../header.png" alt="banner">
