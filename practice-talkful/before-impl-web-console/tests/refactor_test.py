@@ -6,12 +6,12 @@ class RefactorTest(unittest.TestCase):
     def test_long_function(self):
         line_count = len(Path("main.py").read_text().splitlines())
         if line_count >= 70:
-            self.fail(f"why not move config related code to config.py?")
+            self.fail(f"why not move config related code to config.py, since we later need a write config function?")
 
     def test_move_code(self):
         line_count = len(Path("config.py").read_text().splitlines())
         if line_count <= 10:
-            self.fail(f"why not move config related code to config.py?")
+            self.fail(f"why not move config related code to config.py, since we need a write config function?")
 
     def test_no_bad_variable_names(self):
         content = Path("main.py").read_text()
