@@ -32,7 +32,7 @@ is reviewing his code and push him to refactor or do refactor yourself.
 </div>
 
 <div class="hint" title="and its possible solution">
-    Extract fucntion: try extract "file conten load, validation, to obj" these 3 smaller funcs
+    Extract fucntion: try extract "file conten load, validation... " these smaller funcs
 </div>
 
 <div class="hint" title="possible bad smell 2">
