@@ -27,7 +27,8 @@ To startup with a project, it is a good way to read its testcases:
 - [audio usage](file://talkful/introduce/tests/test_audio.py)
 - [shortcut usage](file://talkful/introduce/tests/test_shortcut.py)
 
-click **check** to run all test cases
+click **check** to run all test cases.
+
 some red error msg is expected, since some tests are targeting invalid input and fast crash
 
 <img src="../../res/header.png" alt="banner">
