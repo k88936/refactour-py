@@ -10,6 +10,9 @@ To startup with a project, it is a good way to read its testcases:
 - [shortcut usage](file://talkful/introduce/tests/test_shortcut.py)
 - [complete listen and type demo](file://talkful/introduce/tests/basic_usage.py)
 
-go to definition to see the more detailed doc str.
+## other docs
+- go to `{package}/api.py` to see the more detailed doc str.
+- [how to interact with the app?](file://talkful/introduce/tests/README.md)
+
 
 <img src="../header.png" alt="banner">
