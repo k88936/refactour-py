@@ -2,7 +2,7 @@
 matured and polished product focused on voice input on desktop,
 helpful to save time commanding (or blaming :p) code agents.
 
-## Design
+## Mock
 
 To make it a simple and friendly tour of refactor, it mocked most external dependencies:
 
