@@ -53,3 +53,5 @@ files:
     visible: true
   - name: pyproject.toml
     visible: true
+  - name: tests/README.md
+    visible: true
