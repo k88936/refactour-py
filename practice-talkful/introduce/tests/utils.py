@@ -6,7 +6,6 @@ import sys
 import time
 from multiprocessing.connection import Connection
 
-
 class ConnReader:
     """Wraps Connection to provide stdin-like interface for iteration"""
     def __init__(self, connection: Connection):

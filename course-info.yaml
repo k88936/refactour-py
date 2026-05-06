@@ -8,7 +8,6 @@ content:
   - recap
   - practice-talkful
 additional_files:
-  - name: AGENTS.md
   - name: res/header.png
     is_binary: true
   - name: .gitignore

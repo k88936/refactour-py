@@ -42,11 +42,17 @@ files:
     visible: true
   - name: config.py
     visible: true
-  - name: tests/test_with_config.py
-    visible: true
-    propagatable: false
   - name: tests/utils.py
     visible: true
+  - name: tests/test_with_config.py
+    visible: true
+    editable: false
+    propagatable: false
   - name: tests/refactor_test.py
     visible: false
+    editable: false
     propagatable: false
+  - name: tests/README.md
+    visible: true
+  - name: AGENTS.md
+    visible: true

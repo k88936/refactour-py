@@ -4,13 +4,25 @@ from pathlib import Path
 
 class RefactorTest(unittest.TestCase):
     def test_long_function(self):
-        main_path = Path("main.py")
-        line_count = len(main_path.read_text().splitlines())
-        self.assertLess(line_count, 70, f"main.py has {line_count} lines, tooooooooooo long")
+        line_count = len(Path("main.py").read_text().splitlines())
+        if line_count >= 70:
+            self.fail(f"why not move config related code to config.py")
+
     def test_move_code(self):
-        main_path = Path("config.py")
-        line_count = len(main_path.read_text().splitlines())
-        self.assertGreater(line_count, 10, f"config.py is nearly empty, why not moving code here ?")
+        line_count = len(Path("config.py").read_text().splitlines())
+        if line_count <= 10:
+            self.fail(f"why not move config related code to config.py")
+
+    def test_no_bad_variable_names(self):
+        content = Path("main.py").read_text()
+        for var in ["path1", "exc1"]:
+            if var in content:
+                self.fail(f"Variable '{var}' should be renamed")
+
+    def test_aigc(self):
+        content = Path("main.py").read_text() + Path("config.py").read_text()
+        if "klAud" in content:
+            self.fail("please review aigc (search for 'klAud' :p)")
 
 if __name__ == '__main__':
     unittest.main()
