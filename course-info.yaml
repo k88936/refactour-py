@@ -1,0 +1,14 @@
+type: marketplace
+title: refactour-py
+language: English
+summary: a refactor tour in python
+programming_language: Python
+environment: unittest
+content:
+  - talkful
+additional_files:
+  - name: AGENTS.md
+  - name: talkful/header.png
+    is_binary: true
+  - name: basic_usage.py
+yaml_version: 5
