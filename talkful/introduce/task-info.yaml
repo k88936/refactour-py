@@ -1,7 +1,5 @@
 type: edu
 files:
-  - name: config.py
-    visible: true
   - name: main.py
     visible: true
   - name: asr_model.txt

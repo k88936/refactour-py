@@ -2,7 +2,6 @@ from audio.api import start_record, stop_stream
 from audio.types import StreamHandle
 from asr.api import load_model, recognize
 from asr.types import AsrModelHandle
-from config import load_app_config
 from eventloop import eventloop
 from shortcut.api import register_shortcut
 from shortcut.types import ShortcutEvent, Shortcut
