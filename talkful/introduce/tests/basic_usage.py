@@ -28,10 +28,10 @@ class VoiceTyperTest(unittest.TestCase):
     def test_press_record_release_injects_asr_text(self):
         samples = [0.2, 0.4, 0.6]
 
-        self.parent_conn.send("shortcut 0 1\n")
+        self.parent_conn.send("shortcut F1 PRESSED\n")
         for sample in samples:
             self.parent_conn.send(f"voice {sample}\n")
-        self.parent_conn.send("shortcut 0 2\n")
+        self.parent_conn.send("shortcut F1 RELEASED\n")
 
         output = collect_output(self.parent_conn)
         self.assertIn(f"inject", output)

@@ -12,7 +12,7 @@ def shortcut_demo(conn):
     from eventloop import eventloop
 
     def shortcut_handler(event: ShortcutEvent):
-        print(event)
+        print(event.name)
     
     register_shortcut(Shortcut.F1, shortcut_handler)
     unregister_shortcut(Shortcut.F2)
@@ -28,7 +28,7 @@ def shortcut_demo_all_keys(conn):
     redirect_stdio_to(conn)
     
     def shortcut_handler(event: ShortcutEvent):
-        print(f"F{event.value}")
+        print(f"F{event.name}")
     
     for shortcut in Shortcut:
         register_shortcut(shortcut, shortcut_handler)
@@ -49,19 +49,19 @@ class ShortcutTest(unittest.TestCase):
 
     def test_register_and_trigger(self):
         """Test registering F1 and triggering PRESSED event"""
-        self.parent_conn.send("shortcut 0 1\n")
+        self.parent_conn.send("shortcut F1 PRESSED\n")
         output = collect_output(self.parent_conn)
-        self.assertIn("1", output)
+        self.assertIn("PRESSED", output)
     
     def test_f1_released_event(self):
         """Test F1 with RELEASED event"""
-        self.parent_conn.send("shortcut 0 2\n")  # F1 RELEASED
+        self.parent_conn.send("shortcut F1 RELEASED\n")  # F1 RELEASED
         output = collect_output(self.parent_conn)
-        self.assertIn("2", output)
+        self.assertIn("RELEASED", output)
     
     def test_f2_unregistered(self):
         """Test that F2 (unregistered) is ignored"""
-        self.parent_conn.send("shortcut 1 1\n")  # F2 PRESSED
+        self.parent_conn.send("shortcut F2 PRESSED\n")  # F2 PRESSED
         output = collect_output(self.parent_conn)
         self.assertEqual(output,"")
 
@@ -79,29 +79,17 @@ class ShortcutAllKeysTest(unittest.TestCase):
         self.parent_conn.close()
         self.p.terminate()
     
-    def test_f1_pressed(self):
-        """Test F1 (id=0) PRESSED"""
-        self.parent_conn.send("shortcut 0 1\n")
-        output = collect_output(self.parent_conn)
-        self.assertIn("1", output)
-    
-    def test_f3_released(self):
-        """Test F3 (id=2) RELEASED"""
-        self.parent_conn.send("shortcut 2 2\n")
-        output = collect_output(self.parent_conn)
-        self.assertIn("2", output)
-    
     def test_f5_pressed(self):
-        """Test F5 (id=4) PRESSED"""
-        self.parent_conn.send("shortcut 4 1\n")
+        """Test F5 PRESSED"""
+        self.parent_conn.send("shortcut F5 PRESSED\n")
         output = collect_output(self.parent_conn)
-        self.assertIn("1", output)
+        self.assertIn("PRESSED", output)
     
     def test_f8_released(self):
-        """Test F8 (id=7, last key) RELEASED"""
-        self.parent_conn.send("shortcut 7 2\n")
+        """Test F8 RELEASED"""
+        self.parent_conn.send("shortcut F8 RELEASED\n")
         output = collect_output(self.parent_conn)
-        self.assertIn("2", output)
+        self.assertIn("RELEASED", output)
 
 
 class ShortcutErrorHandlingTest(unittest.TestCase):
@@ -118,49 +106,49 @@ class ShortcutErrorHandlingTest(unittest.TestCase):
     
     def test_invalid_shortcut_id(self):
         """Test invalid shortcut ID (out of range)"""
-        self.parent_conn.send("shortcut 99 1\n")
+        self.parent_conn.send("shortcut INVALID 1\n")
         time.sleep(0.3)
         self.p.join(timeout=1)
         self.assertFalse(self.p.is_alive())
     
     def test_invalid_event_id(self):
         """Test invalid event ID"""
-        self.parent_conn.send("shortcut 0 99\n")
+        self.parent_conn.send("shortcut F1 INVALID\n")
         time.sleep(0.3)
         self.p.join(timeout=1)
         self.assertFalse(self.p.is_alive())
     
     def test_missing_event_id(self):
         """Test event with missing event ID"""
-        self.parent_conn.send("shortcut 0\n")
+        self.parent_conn.send("shortcut F1\n")
         time.sleep(0.3)
         self.p.join(timeout=1)
         self.assertFalse(self.p.is_alive())
     
     def test_negative_shortcut_id(self):
         """Test negative shortcut ID"""
-        self.parent_conn.send("shortcut -1 1\n")
+        self.parent_conn.send("shortcut NEG_F1 1\n")
         time.sleep(0.3)
         self.p.join(timeout=1)
         self.assertFalse(self.p.is_alive())
     
     def test_negative_event_id(self):
         """Test negative event ID"""
-        self.parent_conn.send("shortcut 0 -1\n")
+        self.parent_conn.send("shortcut F1 NEG_PRESSED\n")
         time.sleep(0.3)
         self.p.join(timeout=1)
         self.assertFalse(self.p.is_alive())
     
     def test_non_numeric_shortcut_id(self):
         """Test non-numeric shortcut ID"""
-        self.parent_conn.send("shortcut abc 1\n")
+        self.parent_conn.send("shortcut unknown_key 1\n")
         time.sleep(0.3)
         self.p.join(timeout=1)
         self.assertFalse(self.p.is_alive())
     
     def test_non_numeric_event_id(self):
         """Test non-numeric event ID"""
-        self.parent_conn.send("shortcut 0 xyz\n")
+        self.parent_conn.send("shortcut F1 unknown_event\n")
         time.sleep(0.3)
         self.p.join(timeout=1)
         self.assertFalse(self.p.is_alive())
@@ -185,16 +173,16 @@ class ShortcutSequentialTest(unittest.TestCase):
     
     def test_single_key(self):
         """Test single key press"""
-        self.parent_conn.send("shortcut 0 1\n")  # F1 PRESSED
+        self.parent_conn.send("shortcut F1 PRESSED\n")  # F1 PRESSED
         output = collect_output(self.parent_conn)
-        self.assertIn("1", output)
+        self.assertIn("PRESSED", output)
     
     def test_sequence_different_keys(self):
         """Test sequence of different keys with EOF after each"""
         # First key
-        self.parent_conn.send("shortcut 0 1\n")  # F1 PRESSED
+        self.parent_conn.send("shortcut F1 PRESSED\n")  # F1 PRESSED
         output1 = collect_output(self.parent_conn)
-        self.assertIn("1", output1)
+        self.assertIn("PRESSED", output1)
         
         # Restart process for next event
         self.p.terminate()
@@ -206,9 +194,9 @@ class ShortcutSequentialTest(unittest.TestCase):
         self.p.start()
         
         # Second key
-        self.parent_conn.send("shortcut 3 1\n")  # F4 PRESSED
+        self.parent_conn.send("shortcut F4 PRESSED\n")  # F4 PRESSED
         output2 = collect_output(self.parent_conn)
-        self.assertIn("1", output2)
+        self.assertIn("PRESSED", output2)
 
 if __name__ == '__main__':
     unittest.main()

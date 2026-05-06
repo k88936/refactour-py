@@ -1,14 +1,14 @@
-from enum import unique, IntEnum
+from enum import unique, Enum
 
 
 @unique
-class ShortcutEvent(IntEnum):
-    PRESSED = 1
-    RELEASED = 2
+class ShortcutEvent(Enum):
+    PRESSED=0,
+    RELEASED=1
 
 
 @unique
-class Shortcut(IntEnum):
+class Shortcut(Enum):
     F1 = 0
     F2 = 1
     F3 = 2
