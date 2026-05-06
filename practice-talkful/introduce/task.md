@@ -1,4 +1,4 @@
-**talkful** is a voice typer app. Its name came from the oppositeof [typeless](https://www.typeless.com/), which is a
+**talkful** is a voice typer app. Its name came from the opposite of [typeless](https://www.typeless.com/), which is a
 matured and polished product focused on voice input on desktop,
 helpful to save time commanding (or blaming :p) code agents.
 

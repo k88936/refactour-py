@@ -53,3 +53,11 @@ files:
     visible: true
   - name: tests/README.md
     visible: true
+  - name: .pytest_cache/.gitignore
+    visible: true
+  - name: .pytest_cache/CACHEDIR.TAG
+    visible: true
+  - name: .pytest_cache/README.md
+    visible: true
+  - name: .pytest_cache/v/cache/nodeids
+    visible: true
