@@ -25,6 +25,22 @@ marked with
 ## Your Task
 is reviewing his code and push him to refactor or do refactor yourself.
 
-<div class="hint">
-  Bad smell: Long Function
+## Hints and Advice
+
+<div class="hint" title="possible bad smell 1">
+  Long Function
 </div>
+
+<div class="hint" title="and its possible solution">
+    can extract it into "file conten load, validation, to obj" these 3 sub funcs
+</div>
+
+<div class="hint" title="possible bad smell 2">
+    Mysterious Name
+</div>
+
+<div class="hint" title="possible bad smell 3">
+    Misplaced code: is your mian.py really noodles?
+</div>
+
+Finally, What is *klAud*?
