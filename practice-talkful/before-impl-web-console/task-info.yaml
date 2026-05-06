@@ -40,6 +40,7 @@ files:
     visible: true
   - name: config.py
     visible: true
+    propagatable: false
   - name: tests/utils.py
     visible: true
   - name: tests/test_with_config.py
