@@ -32,17 +32,6 @@ files:
     visible: true
   - name: shortcut/__init__.py
     visible: true
-  - name: tests/utils.py
-    visible: true
-  - name: tests/basic_usage.py
-    visible: true
-    propagatable: false
-  - name: tests/test_audio.py
-    visible: true
-    propagatable: false
-  - name: tests/test_shortcut.py
-    visible: true
-    propagatable: false
   - name: text_inject/api.py
     visible: true
   - name: text_inject/_impl.py
@@ -51,5 +40,13 @@ files:
     visible: true
   - name: pyproject.toml
     visible: true
-  - name: tests/README.md
+  - name: config.py
     visible: true
+  - name: tests/test_with_config.py
+    visible: true
+    propagatable: false
+  - name: tests/utils.py
+    visible: true
+  - name: tests/refactor_test.py
+    visible: false
+    propagatable: false

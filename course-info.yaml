@@ -9,8 +9,6 @@ content:
   - practice-talkful
 additional_files:
   - name: AGENTS.md
-  - name: basic_usage.py
-  - name: config.py
   - name: res/header.png
     is_binary: true
 yaml_version: 5
