@@ -5,11 +5,12 @@ summary: a refactor tour in python
 programming_language: Python
 environment: unittest
 content:
-  - Practice talkful
+  - recap
+  - practice-talkful
 additional_files:
   - name: AGENTS.md
-  - name: Practice talkful/header.png
-    is_binary: true
   - name: basic_usage.py
   - name: config.py
+  - name: res/header.png
+    is_binary: true
 yaml_version: 5
