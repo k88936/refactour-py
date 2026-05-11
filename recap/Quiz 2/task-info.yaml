@@ -13,3 +13,4 @@ message_incorrect: "Incorrect solution. Explanation: While meaningful names, cla
   \ implementing several interfaces, and clear variable names are all normal practices,\
   \ a long method with excessive code can lead to readability and maintenance issues,\
   \ making it a potential code smell."
+local_check: true

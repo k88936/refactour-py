@@ -11,4 +11,6 @@ additional_files:
   - name: res/header.png
     is_binary: true
   - name: .gitignore
+  - name: pyproject.toml
+  - name: uv.lock
 yaml_version: 5

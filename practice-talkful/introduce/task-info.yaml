@@ -49,7 +49,5 @@ files:
     visible: false
   - name: text_inject/__init__.py
     visible: true
-  - name: pyproject.toml
-    visible: true
   - name: tests/README.md
     visible: true

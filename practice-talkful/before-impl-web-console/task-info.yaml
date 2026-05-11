@@ -38,8 +38,6 @@ files:
     visible: false
   - name: text_inject/__init__.py
     visible: true
-  - name: pyproject.toml
-    visible: true
   - name: config.py
     visible: true
   - name: tests/utils.py
