@@ -33,3 +33,7 @@ To make it a simple and friendly tour of refactor, it mocked most external depen
 - go to `{package}/api.py` to see the more detailed doc str.
 - [how to interact with the app?](file:///PracticeOnProjects/talkful/Introduce/eventloop/README.md)
 
+## Limitations
+
+- this is just a simplified demo app without real world examination, lack of exception handling, 
+    still full of bad smell.
