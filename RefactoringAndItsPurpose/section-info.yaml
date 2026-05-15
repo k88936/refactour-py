@@ -1,0 +1,5 @@
+custom_name: "Section 1: Refactoring and its purpose"
+content:
+  - WhatIsRefactor
+  - WhenToRefactor
+  - HowToRefactor

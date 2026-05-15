@@ -1,0 +1,4 @@
+custom_name: Extract Method
+content:
+  - Theory
+  - ExtractDuplicatedCodePractice

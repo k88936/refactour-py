@@ -5,12 +5,14 @@ summary: a refactor tour in python
 programming_language: Python
 environment: unittest
 content:
-  - recap
-  - practice-talkful
+  - RefactoringAndItsPurpose
+  - AFirstSetOfRefactorings
+  - PracticeOnProjects
 additional_files:
   - name: res/header.png
     is_binary: true
   - name: .gitignore
   - name: pyproject.toml
   - name: uv.lock
+  - name: test_utils.py
 yaml_version: 5

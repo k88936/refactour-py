@@ -1,0 +1,17 @@
+type: edu
+custom_name: Inline methods and variables
+files:
+  - name: tests/test.py
+    visible: false
+  - name: src/task.py
+    visible: true
+    placeholders:
+      - offset: 44
+        length: 259
+        placeholder_text: |-
+          def calculate_total_price(product_price: list[int]) -> int | None:
+              try:
+                  return sum(product_price)
+              except Exception as error:
+                  Path("Exception.txt").write_text(str(error), encoding="utf-8")
+                  return None
