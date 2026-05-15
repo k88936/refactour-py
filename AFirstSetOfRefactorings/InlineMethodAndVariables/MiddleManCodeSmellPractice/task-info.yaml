@@ -1,0 +1,32 @@
+type: edu
+custom_name: Middle Man code smell
+files:
+  - name: tests/test.py
+    visible: false
+  - name: src/task.py
+    visible: true
+    placeholders:
+      - offset: 0
+        length: 769
+        placeholder_text: |-
+          # TODO
+          
+          # Middle Man class
+          class MiddleMan:
+              def do_something(self) -> str:
+                  data_provider = DataProvider()
+                  return data_provider.fetch_data()
+          
+          
+          # DataProvider class
+          class DataProvider:
+              def fetch_data(self) -> str:
+                  # Some complex logic to fetch data from a remote server
+                  return "Data from the server"
+          
+          
+          # Client class using MiddleMan
+          class Client:
+              def process_data(self) -> str:
+                  middle_man = MiddleMan()
+                  return middle_man.do_something() # Output: Data from the server

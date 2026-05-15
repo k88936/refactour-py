@@ -95,3 +95,20 @@ def has_return_call_in_func_def(
             ):
                 return True
     return False
+
+
+def has_return_attr_call_in_func_def(
+    function_node: ast.FunctionDef,
+    attr_name: str,
+    receiver_name: str | None = None,
+) -> bool:
+    for node in ast.walk(function_node):
+        if isinstance(node, ast.Return) and isinstance(node.value, ast.Call):
+            called = node.value.func
+            if not isinstance(called, ast.Attribute) or called.attr != attr_name:
+                continue
+            if receiver_name is None:
+                return True
+            if isinstance(called.value, ast.Name) and called.value.id == receiver_name:
+                return True
+    return False
