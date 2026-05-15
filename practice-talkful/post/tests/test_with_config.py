@@ -1,5 +1,6 @@
 import multiprocessing
 import os
+import socket
 import tempfile
 import unittest
 from pathlib import Path
@@ -19,7 +20,14 @@ class VoiceTyperConfigTest(unittest.TestCase):
     def setUp(self):
         self.temp_dir = tempfile.TemporaryDirectory()
         workdir = Path(self.temp_dir.name)
-        (workdir / "config.json").write_text('{"shortcut_key":"F2","model_path":"custom_model.txt"}', encoding="utf-8")
+        with socket.socket() as sock:
+            sock.bind(("127.0.0.1", 0))
+            free_port = int(sock.getsockname()[1])
+
+        (workdir / "config.json").write_text(
+            f'{{"shortcut_key":"F2","model_path":"custom_model.txt","web_port":{free_port}}}',
+            encoding="utf-8",
+        )
         (workdir / "custom_model.txt").write_text("mock custom model", encoding="utf-8")
 
         self.parent_conn, self.child_conn = multiprocessing.Pipe()

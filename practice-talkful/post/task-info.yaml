@@ -54,3 +54,10 @@ files:
     propagatable: false
   - name: config/__init__.py
     visible: true
+  - name: web_console.py
+    visible: true
+  - name: tests/test_web_console.py
+    visible: false
+    propagatable: false
+  - name: config.json
+    visible: true
