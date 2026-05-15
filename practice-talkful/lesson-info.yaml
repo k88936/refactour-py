@@ -3,3 +3,4 @@ custom_name: "Practice: talkful, a voice typer app"
 content:
   - introduce
   - before-impl-web-console
+  - post
