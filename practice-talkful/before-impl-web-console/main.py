@@ -78,3 +78,5 @@ def main():
     # endregion
 
     eventloop()
+if __name__ == '__main__':
+    main()
