@@ -49,8 +49,8 @@ def has_module_constant_value_in_module(module: ast.Module, value: float) -> boo
 
 
 def has_variable_assignment_in_func_def(
-    function_node: ast.FunctionDef,
-    variable_name: str,
+        function_node: ast.FunctionDef,
+        variable_name: str,
 ) -> bool:
     for node in ast.walk(function_node):
         if isinstance(node, ast.Assign):
@@ -61,9 +61,9 @@ def has_variable_assignment_in_func_def(
 
 
 def collect_method_from_class_in_module(
-    module: ast.Module,
-    class_name: str | None = None,
-    method_name: str | None = None,
+        module: ast.Module,
+        class_name: str | None = None,
+        method_name: str | None = None,
 ) -> dict[str, ast.FunctionDef] | ast.FunctionDef | None:
     methods: dict[str, ast.FunctionDef] = {}
     for node in module.body:
@@ -77,9 +77,9 @@ def collect_method_from_class_in_module(
 
 
 def has_return_call_in_func_def(
-    function_node: ast.FunctionDef,
-    called_name: str,
-    first_arg_name: str | None = None,
+        function_node: ast.FunctionDef,
+        called_name: str,
+        first_arg_name: str | None = None,
 ) -> bool:
     for node in ast.walk(function_node):
         if isinstance(node, ast.Return) and isinstance(node.value, ast.Call):
@@ -89,18 +89,18 @@ def has_return_call_in_func_def(
             if first_arg_name is None:
                 return True
             if (
-                len(node.value.args) >= 1
-                and isinstance(node.value.args[0], ast.Name)
-                and node.value.args[0].id == first_arg_name
+                    len(node.value.args) >= 1
+                    and isinstance(node.value.args[0], ast.Name)
+                    and node.value.args[0].id == first_arg_name
             ):
                 return True
     return False
 
 
 def has_return_attr_call_in_func_def(
-    function_node: ast.FunctionDef,
-    attr_name: str,
-    receiver_name: str | None = None,
+        function_node: ast.FunctionDef,
+        attr_name: str,
+        receiver_name: str | None = None,
 ) -> bool:
     for node in ast.walk(function_node):
         if isinstance(node, ast.Return) and isinstance(node.value, ast.Call):
