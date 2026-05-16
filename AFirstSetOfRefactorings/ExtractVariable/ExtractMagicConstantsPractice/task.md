@@ -16,12 +16,12 @@ In this task, you need to identify magic numbers in the code and create constant
 
 <div class="hint" title="Shortcut for Introduce constant refactoring">
 
-&shortcut:IntroduceConstant; (macOS) or Ctrl+Alt+C (Windows/Linux) – shortcut to introduce a constant.
+&shortcut:IntroduceConstant; shortcut to introduce a constant.
 </div>
 
 <div class="hint" title="Shortcut for Introduce variable refactoring">
 
-&shortcut:IntroduceVariable; (macOS) or Ctrl+Alt+V (Windows/Linux) – shortcut to introduce a variable.
+&shortcut:IntroduceVariable; shortcut to introduce a variable.
 </div>
 
 <div class="hint" title="Speed of light">

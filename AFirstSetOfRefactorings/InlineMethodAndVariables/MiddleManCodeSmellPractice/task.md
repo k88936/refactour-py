@@ -1,4 +1,5 @@
-### Task
+task 3/3 middle man code smell 
+
 In this task, you need to resolve Middle Man code smell using Inline refactoring.
 
 The **Middle Man code smell** refers to a situation in which a **class or method acts as a simple intermediary**,
@@ -21,7 +22,6 @@ Do not forget to remove `MiddleMan` class after that.
 
 <div class="hint" title="Shortcut for Inline refactoring">
 
-To apply the Inline refactoring, select the code you want to inline and press the &shortcut:Inline; (macOS) or
-Ctrl+Alt+N (Windows/Linux) shortcut.
+To apply the Inline refactoring, select the code you want to inline and press the &shortcut:Inline; shortcut.
 
 </div>

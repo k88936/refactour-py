@@ -8,8 +8,7 @@ refactoring.
 ### Hints
 
 <div class="hint" title="Shortcut for Inline refactoring">
-To apply the Inline refactoring, select the code you want to inline and press the &shortcut:Inline; (macOS) or 
-Ctrl+Alt+N (Windows/Linux) shortcut. 
+To apply the Inline refactoring, select the code you want to inline and press the &shortcut:Inline; shortcut. 
 </div>
 
 <div class="hint" title="Refactoring hint">

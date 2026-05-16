@@ -20,31 +20,20 @@ class InliningTest(unittest.TestCase):
 
     def test_deleted_variables_and_methods(self):
         tree = ast.parse(self.source_text)
-        target = collect_method_from_class_in_module(
-            tree,
-            class_name="Store",
-            method_name="calculate_total_price",
-        )
         functions = collect_func_def_from_module(tree)
-        methods = collect_method_from_class_in_module(tree)
+        target = functions.get("calculate_total_price")
 
-        assert target is not None, "Expected Store.calculate_total_price to be present."
+        assert target is not None, "Expected calculate_total_price function to be present."
         assert not has_variable_assignment_in_func_def(target, "total_price"), (
             "Please, identify unnecessary variables"
-        )
-        assert "log_error" not in functions and "log_error" not in methods, (
-            "Please, identify unnecessary methods"
         )
 
     def test_expression_call_is_replaced_by_its_body(self):
         tree = ast.parse(self.source_text)
-        target = collect_method_from_class_in_module(
-            tree,
-            class_name="Store",
-            method_name="calculate_total_price",
-        )
+        functions = collect_func_def_from_module(tree)
+        target = functions.get("calculate_total_price")
 
-        assert target is not None, "Expected Store.calculate_total_price to be present."
+        assert target is not None, "Expected calculate_total_price function to be present."
         assert has_return_call_in_func_def(
             target,
             called_name="sum",

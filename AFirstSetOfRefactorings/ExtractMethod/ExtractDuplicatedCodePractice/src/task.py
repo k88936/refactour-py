@@ -6,7 +6,6 @@ def validate_file(file_path: Path) -> None:
     if not file_path.exists() or not file_path.is_file():
         raise FileNotFoundError(file_path)
 
-
 def word_count(file_name: str) -> int:
     file_path = Path(file_name)
     validate_file(file_path)

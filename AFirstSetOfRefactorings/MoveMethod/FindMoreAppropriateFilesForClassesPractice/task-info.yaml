@@ -8,7 +8,7 @@ files:
     visible: true
     placeholders:
       - offset: 0
-        length: 180
+        length: 179
         placeholder_text: |-
           # TODO
           class Car:

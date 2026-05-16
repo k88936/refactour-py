@@ -7,10 +7,8 @@ files:
     visible: true
     placeholders:
       - offset: 0
-        length: 769
+        length: 223
         placeholder_text: |-
-          # TODO
-          
           # Middle Man class
           class MiddleMan:
               def do_something(self) -> str:

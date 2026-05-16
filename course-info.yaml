@@ -15,4 +15,14 @@ additional_files:
   - name: pyproject.toml
   - name: uv.lock
   - name: test_utils.py
+  - name: res/refactor_this.png
+    is_binary: true
+  - name: res/refactor_this_dark.png
+    is_binary: true
+  - name: res/search_everywhere.png
+    is_binary: true
+  - name: res/search_everywhere_dark.png
+    is_binary: true
+  - name: res/ts-extract-local.gif
+    is_binary: true
 yaml_version: 5

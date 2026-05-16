@@ -8,5 +8,5 @@ In this task, you need to identify duplicated code and extract it into a separat
 
 <div class="hint" title="Shortcut for Extract method refactoring">
 
-&shortcut:ExtractMethod; (macOS) or Ctrl+Alt+M (Windows/Linux) – shortcut to extract a method.
+&shortcut:ExtractMethod; – shortcut to extract a method.
 </div>
