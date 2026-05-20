@@ -2,6 +2,9 @@ type: marketplace
 title: refactour-py
 language: English
 summary: a refactor tour in python
+vendor:
+  name: k88936
+  email: kvtodev@outlook.com
 programming_language: Python
 environment: unittest
 content:
