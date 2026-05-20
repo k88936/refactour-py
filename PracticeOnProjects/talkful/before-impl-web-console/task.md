@@ -28,18 +28,6 @@ is reviewing his code and push him to refactor or do refactor yourself.
 ## Hints and Advice
 
 <div class="hint" title="possible bad smell 1">
-    Long Function
-</div>
-
-<div class="hint" title="and its possible solution">
-    Extract fucntion: try extract "file conten load, validation... " these smaller funcs
-</div>
-
-<div class="hint" title="possible bad smell 2">
-    Mysterious Name: What is 'klAud'?
-## Hints and Advice
-
-<div class="hint" title="possible bad smell 1">
   Long Function
 </div>
 
