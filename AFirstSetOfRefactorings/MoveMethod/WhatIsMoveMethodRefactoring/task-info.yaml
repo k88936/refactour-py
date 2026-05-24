@@ -1,2 +1,5 @@
 type: theory
 custom_name: What is Move refactoring?
+files:
+  - name: src/main.py
+    visible: true

@@ -1,2 +1,5 @@
 type: theory
 custom_name: Inline refactoring
+files:
+  - name: task.py
+    visible: true

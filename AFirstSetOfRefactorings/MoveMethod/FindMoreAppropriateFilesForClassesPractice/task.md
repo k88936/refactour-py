@@ -12,8 +12,8 @@ Use the &shortcut:Move; shortcut to move a code element.
 
 <div class="hint" title="Refactoring hint">
 
-Move `Car` class to the `Car.kt` file.
+Move `Car` class to the `car.py` file.
 
-Move `Driver` class to the `Driver.kt` file.
+Move `Driver` class to the `driver.py` file.
 
 </div>

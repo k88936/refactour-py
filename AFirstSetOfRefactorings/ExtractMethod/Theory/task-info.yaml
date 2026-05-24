@@ -1,2 +1,5 @@
 type: theory
 custom_name: What is Extract Method refactoring?
+files:
+  - name: task.py
+    visible: true

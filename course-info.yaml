@@ -10,7 +10,6 @@ environment: unittest
 content:
   - RefactoringAndItsPurpose
   - AFirstSetOfRefactorings
-  - PracticeOnProjects
 additional_files:
   - name: res/header.png
     is_binary: true

@@ -10,7 +10,6 @@ files:
       - offset: 0
         length: 179
         placeholder_text: |-
-          # TODO
           class Car:
               def __init__(self, gears_number: int) -> None:
                   self._gears_number = gears_number
@@ -60,6 +59,7 @@ files:
           
           if __name__ == "__main__":
               main()
+
   - name: src/driver.py
     visible: true
     placeholders:

@@ -112,3 +112,12 @@ def has_return_attr_call_in_func_def(
             if isinstance(called.value, ast.Name) and called.value.id == receiver_name:
                 return True
     return False
+
+
+def collect_import_from_module(module: ast.Module) -> dict[str, str]:
+    imports: dict[str, str] = {}
+    for node in module.body:
+        if isinstance(node, ast.ImportFrom) and node.module:
+            for imported in node.names:
+                imports[imported.name] = node.module
+    return imports
