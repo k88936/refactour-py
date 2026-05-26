@@ -1,3 +1,5 @@
+# Introduce
+
 In this task, you need to split a long method into small ones.
 
 This is a program computing the bill of comedy , (for demo purpose, the given function is not quite long compared to
@@ -13,13 +15,17 @@ Amount owed is $1730.00
 You earned 47 credits
 ```
 
+# Task
+
 recall that:
 > first refactor the program to make it easy to add the feature, then add the feature.
 
-* now we have a new feature request: to ALSO support HTML format output,
-  before adding that feature, let us do refactor first.
+Think about we are having a new feature request: ALSO support HTML format output.
 
-* we recommend it split into *compute based on rules* and *render to text* 2 steps, and pass a dataclass between them.
+* before adding that feature, let us do a refactor first.
+
+* we recommend splitting it into *compute based on rules* and *render to text* 2 steps, and passing a dataclass between
+  them. Thus we can easily replace the latter render method.
 
 * ps: we have written a [regression test](file:///CodeSmell/LongFunction/practice/tests/regression_test.py) to make sure
   it remains the same behavior after refactoring.

@@ -19,9 +19,9 @@ example_invoices = [
     }
 ]
 
-@dataclass
+@dataclass(frozen=True)
 class StatementData:
-    @dataclass
+    @dataclass(frozen=True)
     class Performance:
         play_name: str
         amount: int

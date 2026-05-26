@@ -17,6 +17,14 @@ def collect_class_def_from_module(module: ast.Module) -> dict[str, ast.ClassDef]
     }
 
 
+def collect_str_constants_from_func_def(function_node: ast.FunctionDef) -> list[str]:
+    return [
+        node.value
+        for node in ast.walk(function_node)
+        if isinstance(node, ast.Constant) and isinstance(node.value, str)
+    ]
+
+
 def collect_func_calls_from_func_def(function_node: ast.FunctionDef) -> list[str]:
     names: list[str] = []
     for node in ast.walk(function_node):

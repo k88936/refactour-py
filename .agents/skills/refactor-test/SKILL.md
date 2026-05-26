@@ -20,4 +20,4 @@ class SomeRefactorTest(unittest.TestCase):
 
 # and concrete test
 ```
-* reuse helpers from and extract common methods to`test_utils.py`
+* reuse helpers from and extract common methods to`./test_utils.py` (project root)

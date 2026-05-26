@@ -7,17 +7,17 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 856
+      - offset: 882
         length: 1425
         placeholder_text: |-
           # TODO
           pass
-      - offset: 2342
+      - offset: 2368
         length: 357
         placeholder_text: |-
           # TODO
           pass
-      - offset: 2733
+      - offset: 2759
         length: 69
         placeholder_text: |-
           total_amount = 0
