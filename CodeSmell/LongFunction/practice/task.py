@@ -1,4 +1,7 @@
 # example input data, hardcoded for demo purpose
+from dataclasses import dataclass
+from typing import List, Dict
+
 example_plays = {
     "hamlet": {"name": "Hamlet", "type": "tragedy"},
     "as-like": {"name": "As You Like It", "type": "comedy"},
@@ -16,16 +19,24 @@ example_invoices = [
     }
 ]
 
+@dataclass
+class StatementData:
+    @dataclass
+    class Performance:
+        play_name: str
+        amount: int
+        audience: int
+    customer: str
+    performances: List[Performance]
+    total_amount: int
+    volume_credits: int
 
-def statement(invoice, plays):
-    total_amount = 0
-    volume_credits = 0
-    result = f"Statement for {invoice['customer']}\n"
 
-    for perf in invoice["performances"]:
-        play = plays[perf["playID"]]
-        this_amount = 0
+def compute_statement_data(invoice, plays) -> StatementData:
+    def play_for(invoice, plays):
+        return plays[invoice["playID"]]
 
+    def amount_for(perf, play):
         if play["type"] == "tragedy":
             this_amount = 40000
             if perf["audience"] > 30:
@@ -37,18 +48,42 @@ def statement(invoice, plays):
             this_amount += 300 * perf["audience"]
         else:
             raise ValueError(f"unknown type: {play['type']}")
+        return this_amount
 
-        volume_credits += max(perf["audience"] - 30, 0)
+    def volume_credits_for(perf, play):
+        credits = max(perf["audience"] - 30, 0)
         if "comedy" == play["type"]:
-            volume_credits += perf["audience"] // 5
+            credits += perf["audience"] // 5
+        return credits
 
-        result += f"  {play['name']}: ${this_amount / 100:.2f} ({perf['audience']} seats)\n"
-        total_amount += this_amount
+    def total_amount(data):
+        return sum(p.amount for p in data)
+    performances = []
+    volume_credits = 0
+    for perf in invoice["performances"]:
+        play = play_for(perf, plays)
+        amount = amount_for(perf, play)
+        vc = volume_credits_for(perf, play)
+        volume_credits += vc
+        performances.append(StatementData.Performance(amount=amount, audience=perf["audience"], play_name=play["name"]))
+    return StatementData(
+        customer=invoice["customer"],
+        performances=performances,
+        total_amount=total_amount(performances),
+        volume_credits=volume_credits,
+    )
 
-    result += f"Amount owed is ${total_amount / 100:.2f}\n"
-    result += f"You earned {volume_credits} credits\n"
+def render_plain_text(statement_data: StatementData) -> str:
+    result = f"Statement for {statement_data.customer}\n"
+    for perf in statement_data.performances:
+        result += f"  {perf.play_name}: ${perf.amount / 100:.2f} ({perf.audience} seats)\n"
+    result += f"Amount owed is ${statement_data.total_amount / 100:.2f}\n"
+    result += f"You earned {statement_data.volume_credits} credits\n"
     return result
 
+
+def statement(invoice, plays):
+    return render_plain_text(compute_statement_data(invoice, plays))
 
 if __name__ == "__main__":
     print(statement(example_invoices[0], example_plays))

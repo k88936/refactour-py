@@ -31,6 +31,7 @@ class RegressionTest(unittest.TestCase):
                 Amount owed is $1730.00
                 You earned 47 credits
         """
+        assert "BigCo" in result
         assert "650" in result
         assert "55" in result
         assert "580" in result
