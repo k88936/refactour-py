@@ -1,0 +1,8 @@
+type: edu
+custom_name: Split long function
+files:
+  - name: task.py
+    visible: true
+  - name: tests/regression_test.py
+    visible: true
+    propagatable: false

@@ -14,13 +14,7 @@ ProjectManager wants to copy a simple one, at least it can:
 classmate Klauder has finished a little feature: *read & apply config file* and
 passed [test case](file://practice-talkful/before-impl-web-console/tests/test_with_config.py) **luckily**.
 
-marked with
-```python
-# TODO
-# region Klauder code
-...
-# endregion
-```
+marked with TODO and place holder
 
 ## Your Task
 is reviewing his code and push him to refactor or do refactor yourself.

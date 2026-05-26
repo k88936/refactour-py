@@ -7,7 +7,7 @@ files:
     visible: true
     placeholders:
       - offset: 60
-        length: 233
+        length: 234
         placeholder_text: |-
           def calculate_total_price(product_price: List[int]) -> Optional[int]:
              try:
@@ -18,4 +18,5 @@ files:
                return None
           
           def log_error(error: Exception, file_path: str) -> None:
-              Path("Exception.txt").write_text(str(error), encoding="utf-8")
+             with open(file_path, 'w', encoding='utf-8') as f:
+               f.write(str(error))

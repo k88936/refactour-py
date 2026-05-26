@@ -2,6 +2,25 @@ type: edu
 files:
   - name: main.py
     visible: true
+    placeholders:
+      - offset: 1128
+        length: 60
+        placeholder_text: "DEFAULT_CONFIG_PATH = \"config.json\"\nDEFAULT_SHORTCUT_KEY\
+      \ = Shortcut.F1\nDEFAULT_MODEL_PATH = \"asr_model.txt\"\n\npath = DEFAULT_CONFIG_PATH\n\
+      config_path = Path(path)\nconfig = AppConfig(shortcut_key=DEFAULT_SHORTCUT_KEY,\
+      \ model_path=DEFAULT_MODEL_PATH)\nif config_path.exists():\n  try:\n    raw_config\
+      \ = json.loads(config_path.read_text(encoding=\"utf-8\"))\n  except json.JSONDecodeError\
+      \ as exc:\n    raise ValueError(f\"Invalid JSON in {path}: {exc.msg}\") from\
+      \ exc\n\n    if not isinstance(raw_config, dict):\n        raise ValueError(f\"\
+      Invalid config in {path}: root must be an object\")\n  \n  key = raw_config.get(\"\
+      shortcut_key\", DEFAULT_SHORTCUT_KEY.name)\n  if not isinstance(key, str):\n\
+      \    raise ValueError(f\"Invalid config in {path}: shortcut_key must be a string\
+      \ like 'F1'\")\n  try:\n    pass\n  except KeyError as exc1:\n    raise ValueError(f\"\
+      Invalid config in {path}: unsupported shortcut_key '{key}'\") from exc1\n  shortcut_key\
+      \ = Shortcut[key]\n  path1 = raw_config.get(\"model_path\", DEFAULT_MODEL_PATH)\n\
+      \  if not isinstance(path1, str) or not path1.strip():\n    raise ValueError(f\"\
+      Invalid config in {path}: model_path must be a non-empty string\")\n  model_path\
+      \ = path1\n  config = AppConfig(shortcut_key=shortcut_key, model_path=model_path)"
   - name: asr_model.txt
     visible: true
   - name: asr/api.py
@@ -40,6 +59,10 @@ files:
     visible: true
   - name: config.py
     visible: true
+    placeholders:
+      - offset: 160
+        length: 1432
+        placeholder_text: "# TODO"
     propagatable: false
   - name: talkful_test_utils.py
     visible: true

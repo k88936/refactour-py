@@ -114,10 +114,35 @@ def has_return_attr_call_in_func_def(
     return False
 
 
-def collect_import_from_module(module: ast.Module) -> dict[str, str]:
-    imports: dict[str, str] = {}
-    for node in module.body:
-        if isinstance(node, ast.ImportFrom) and node.module:
-            for imported in node.names:
-                imports[imported.name] = node.module
-    return imports
+def get_function_line_count(function_node: ast.FunctionDef) -> int:
+    if function_node.end_lineno is None or function_node.lineno is None:
+        return 0
+    return function_node.end_lineno - function_node.lineno + 1
+
+
+def get_module_line_count(module: ast.Module) -> int:
+    max_line = 0
+    for node in ast.walk(module):
+        if hasattr(node, 'end_lineno') and node.end_lineno is not None:
+            if node.end_lineno > max_line:
+                max_line = node.end_lineno
+    return max_line
+
+
+def collect_variable_assignments_in_func(function_node: ast.FunctionDef) -> list[str]:
+    var_names = []
+    for node in ast.walk(function_node):
+        if isinstance(node, ast.Assign):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    var_names.append(target.id)
+    return var_names
+
+
+def find_string_constants_containing(module: ast.Module, substring: str) -> list[str]:
+    strings = []
+    for node in ast.walk(module):
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):
+            if substring in node.value:
+                strings.append(node.value)
+    return strings

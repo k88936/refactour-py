@@ -1,5 +1,2 @@
 type: theory
 custom_name: VS Code
-files:
-  - name: task.py
-    visible: true
