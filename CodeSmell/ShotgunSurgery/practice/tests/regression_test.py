@@ -12,12 +12,14 @@ def print_all():
 class TestCase(unittest.TestCase):
 
     def test_en(self):
+
         try:
             from CodeSmell.ShotgunSurgery.practice.thu_info_cli import set_lang
             set_lang("en")
         except:
             pass
         set_language(I18nLanguage.EN)
+
         output = print_all()
         print(output)
         assert '王小明' in output
@@ -25,6 +27,7 @@ class TestCase(unittest.TestCase):
         assert 'swim' in output
 
     def test_zh(self):
+
         try:
             from CodeSmell.ShotgunSurgery.practice.thu_info_cli import set_lang
             set_lang("zn")
