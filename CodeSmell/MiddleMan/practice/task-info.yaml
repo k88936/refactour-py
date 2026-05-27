@@ -1,5 +1,4 @@
 type: edu
-custom_name: Middle Man code smell
 files:
   - name: tests/test.py
     visible: false
